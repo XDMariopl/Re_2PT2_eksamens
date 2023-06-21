@@ -13,6 +13,7 @@ public class ObjectScript : MonoBehaviour {
 	public GameObject WrongPanel;
 	public GameObject WrongGroup;
 	public GameObject nextButton;
+	public GameObject tryAgainButton;
 
 	public GameObject[] CorrectToggle;
 	public GameObject[] WrongToggle;

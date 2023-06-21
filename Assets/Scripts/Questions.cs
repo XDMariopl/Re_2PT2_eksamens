@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.Policy;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,10 +20,14 @@ public class Questions : MonoBehaviour {
             {
                 objectScript.WrongPanel.SetActive(true);
                 objectScript.WrongGroup.SetActive(true);
-                objectScript.nextButton.SetActive(true);
+                objectScript.tryAgainButton.SetActive(true);
                 i=objectScript.WrongToggle.Length;
                 wrong = true;
-                StaticVariables.WrongQ++;
+                if (StaticVariables.firstTry[StaticVariables.firstTryIndex] == true)
+                {
+                    StaticVariables.firstTryIndex++;
+                    StaticVariables.firstTry[StaticVariables.firstTryIndex] = false;
+                }
             }
         }
 
@@ -40,15 +45,19 @@ public class Questions : MonoBehaviour {
                 objectScript.AnswerGroup.SetActive(true);
                 objectScript.AnswerPanel.SetActive(true);
                 objectScript.nextButton.SetActive(true);
+                StaticVariables.firstTryIndex++;
             }
             else
             {
                 objectScript.WrongPanel.SetActive(true);
                 objectScript.WrongGroup.SetActive(true);
-                objectScript.nextButton.SetActive(true);
-                StaticVariables.WrongQ++;
+                objectScript.tryAgainButton.SetActive(true);
+                if (StaticVariables.firstTry[StaticVariables.firstTryIndex] == true)
+                {
+                    StaticVariables.firstTryIndex++;
+                    StaticVariables.firstTry[StaticVariables.firstTryIndex] = false;
+                }
             }
         }
-        StaticVariables.Q++;
     }
 }

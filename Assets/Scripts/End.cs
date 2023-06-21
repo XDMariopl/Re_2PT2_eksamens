@@ -4,10 +4,20 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class End : MonoBehaviour {
-	public GameObject endtxt;
+
+	public ObjectScript objectScript;
+    public GameObject endtxt;
+	private int firstTryCount=0;
 
 	void Start () {
-		endtxt.GetComponent<Text>().text ="You answered "+(StaticVariables.Q-StaticVariables.WrongQ)+" questions correctly";
+		for(int i = 0;i<StaticVariables.firstTry.Length;i++)
+		{
+			if (StaticVariables.firstTry[i] == true)
+			{
+				firstTryCount++;
+			}
+		}
+		endtxt.GetComponent<Text>().text ="Tu atbildeji uz "+firstTryCount+" jautajumiem ar primo piegajienu";
 	}
 	
 }

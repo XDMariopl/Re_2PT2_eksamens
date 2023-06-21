@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StaticVariables : MonoBehaviour {
 
-    public static int Q;
-    public static int WrongQ;
     public static bool ReadTutorial = false;
+    public static bool[] firstTry = {true,true,true,true,true,true,true,true,true,true};
+    public static int firstTryIndex =0;
 }

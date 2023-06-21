@@ -7,6 +7,7 @@ public class SceneStuff : MonoBehaviour
 {
     public ObjectScript objectScript;
     public string NextScene;
+    public string CurrentScene;
 
     void Start()
     {
@@ -45,9 +46,16 @@ public class SceneStuff : MonoBehaviour
 
     public void Restart()
     {
-        StaticVariables.Q = 0;
-        StaticVariables.WrongQ = 0;
+        for(int i = 0; i < StaticVariables.firstTry.Length; i++)
+        {
+            StaticVariables.firstTry[i] = true;
+        }
         SceneManager.LoadScene("Start_scene",LoadSceneMode.Single);
+    }
+
+    public void Reaload_Scene()
+    {
+        SceneManager.LoadScene(CurrentScene);
     }
 }
 
